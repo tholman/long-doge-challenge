@@ -99,11 +99,15 @@ function injectWow() {
     lengthEl.innerText = "!!much wow very long much wow!!"
   }
 
+  if (wows === 10000) {
+    lengthEl.innerText = "many many wow"
+  }
+
   if (wows === 30000) {
     lengthEl.innerText = "!!!!!!! dont forget to print !!!!!!"
   }
 
-  if(wows > 100 && Math.random() > 0.995) {
+  if(wows > 200 && Math.random() > 0.995) {
     injectLargeWow()
   }
 }
@@ -125,7 +129,7 @@ function injectLargeWow() {
 }
 
 function onBodyClick(e) {
-  if(e.target.className === 'textwow' && largeWows > 15) {
+  if(e.target.className === 'textwow' && largewows >= 15) {
     rainbowwows++
     e.target.classList.add('rainbow')
     rainbowwowcontainer.classList.remove('hidden')
