@@ -20,6 +20,7 @@ const observer = new IntersectionObserver(
   { rootMargin: "0px 0px 200% 0px" }
 )
 
+
 window.onscroll = function(ev) {
   if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
     const lastEl = document.querySelector(".neck:last-child")
