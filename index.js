@@ -3,11 +3,14 @@ const neck = document.querySelector(".neck")
 const wowEl = document.querySelector("#wows")
 
 const largeWowContainer = document.querySelector("#largewowcontainer")
+const rainbowWowContainer = document.querySelector('#rainbowwowcontainer')
 const largewowEl = document.querySelector("#largeWows")
 const lengthEl = document.querySelector("#length")
+const rainbowsEl = document.querySelector("#rainbow")
 
 let wows = 0
 let largewows = 0
+let rainbowwows = 0
 
 document.querySelector(".print").addEventListener("click", () => {
   window.print()
@@ -24,11 +27,13 @@ const observer = new IntersectionObserver(
   { rootMargin: "0px 0px 200% 0px" }
 )
 
+document.addEventListener('click', onBodyClick)
+
 
 window.onscroll = function(ev) {
   if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
     const lastEl = document.querySelector(".neck:last-child")
-    inject({ target: lastEl })
+    injectNeck({ target: lastEl })
   }
 }
 
@@ -117,7 +122,15 @@ function injectLargeWow() {
   newWow.style.left = '50%'
   newWow.style.top = wrapper.offsetHeight - 200 + "px"
   document.body.appendChild(newWow)
+}
 
+function onBodyClick(e) {
+  if(e.target.classList.contains('textwow') ) {
+    rainbowwows++
+    e.target.classList.toggle('rainbow')
+    rainbowwowcontainer.classList.remove('hidden')
+    rainbowsEl.innerText = rainbowwows
+  }
 }
 
 observer.observe(neck)

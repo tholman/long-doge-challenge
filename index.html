@@ -34,6 +34,7 @@
       }
 
       .textwow {
+        cursor: pointer;
         position: absolute;
         font-size: 33px;
         font-weight: bold;
@@ -81,6 +82,11 @@
         -webkit-text-stroke: 4px white;
       }
 
+      .rainbow {
+        color: pink;
+        animation: rainbow 1500ms ease infinite;
+      }
+
       .hidden {
         display: none;
       }
@@ -88,6 +94,15 @@
       @media (max-width: 800px) {
         .sitter {
           display: none;
+        }
+      }
+
+      @keyframes rainbow {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
         }
       }
 
@@ -110,6 +125,9 @@
         You have collected <span id="wows">0</span> wows<br />
         <div id="largewowcontainer" class="hidden">
           You have collected <span id="largeWows">0</span> LARGE wows<br />
+        </div>
+        <div id="rainbowwowcontainer" class="hidden">
+          You have rainbowed <span id="rainbow">0</span> wows<br />
         </div>
         Your doge is <span id="length">wow</span> long
       </div>
