@@ -98,7 +98,7 @@ function injectWow() {
     lengthEl.innerText = "!!!!!!! dont forget to print !!!!!!"
   }
 
-  if(wows > 100 && Math.random() > 0.99) {
+  if(wows > 100 && Math.random() > 0.995) {
     injectLargeWow()
   }
 }
