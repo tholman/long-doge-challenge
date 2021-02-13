@@ -127,7 +127,7 @@ function injectLargeWow() {
 function onBodyClick(e) {
   if(e.target.classList.contains('textwow') ) {
     rainbowwows++
-    e.target.classList.toggle('rainbow')
+    e.target.classList.add('rainbow')
     rainbowwowcontainer.classList.remove('hidden')
     rainbowsEl.innerText = rainbowwows
   }
