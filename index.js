@@ -1,6 +1,8 @@
 const wrapper = document.querySelector(".wrapper")
 const neck = document.querySelector(".neck")
 const wowEl = document.querySelector("#wows")
+
+const largeWowContainer = document.querySelector("#largewowcontainer")
 const largewowEl = document.querySelector("#largeWows")
 const lengthEl = document.querySelector("#length")
 
@@ -106,6 +108,8 @@ function injectLargeWow() {
   wows++
   largewows++
   largewowEl.innerText = largewows
+
+  largeWowContainer.classList.remove('hidden')
 
   const newWow = document.createElement("div")
   newWow.className = "largewow"

@@ -81,6 +81,10 @@
         -webkit-text-stroke: 4px white;
       }
 
+      .hidden {
+        display: none;
+      }
+
       @media (max-width: 800px) {
         .sitter {
           display: none;
@@ -104,7 +108,9 @@
       <h1>PRINT A LONG DOGE</h1>
       <div class="stat">
         You have collected <span id="wows">0</span> wows<br />
-        You have collected <span id="largeWows">0</span> LARGE wows<br />
+        <div id="largewowcontainer" class="hidden">
+          You have collected <span id="largeWows">0</span> LARGE wows<br />
+        </div>
         Your doge is <span id="length">wow</span> long
       </div>
     </div>
