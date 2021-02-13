@@ -74,6 +74,13 @@
         font-weight: bold;
       }
 
+      .largewow {
+        position: absolute;
+        font-size: 240px;
+        transform: translateX(-50%);
+        -webkit-text-stroke: 4px white;
+      }
+
       @media (min-width: 480px) {
         .sitter {
           display: none;
@@ -96,7 +103,8 @@
     <div class="info">
       <h1>PRINT A LONG DOGE</h1>
       <div class="stat">
-        You have collected <span id="wows"></span> wows<br />
+        You have collected <span id="wows">0</span> wows<br />
+        You have collected <span id="largeWows">0</span> LARGE wows<br />
         Your doge is <span id="length">wow</span> long
       </div>
     </div>

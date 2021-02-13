@@ -1,9 +1,11 @@
 const wrapper = document.querySelector(".wrapper")
 const neck = document.querySelector(".neck")
 const wowEl = document.querySelector("#wows")
+const largewowEl = document.querySelector("#largeWows")
 const lengthEl = document.querySelector("#length")
 
 let wows = 0
+let largewows = 0
 
 document.querySelector(".print").addEventListener("click", () => {
   window.print()
@@ -93,6 +95,25 @@ function injectWow() {
   if (wows === 30000) {
     lengthEl.innerText = "!!!!!!! dont forget to print !!!!!!"
   }
+
+  if(wows > 100 && Math.random() > 0.99) {
+    injectLargeWow()
+  }
+}
+
+function injectLargeWow() {
+
+  wows++
+  largewows++
+  largewowEl.innerText = largewows
+
+  const newWow = document.createElement("div")
+  newWow.className = "largewow"
+  newWow.innerText = "WOW"
+  newWow.style.left = '50%'
+  newWow.style.top = wrapper.offsetHeight - 200 + "px"
+  document.body.appendChild(newWow)
+
 }
 
 observer.observe(neck)
