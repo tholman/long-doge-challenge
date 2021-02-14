@@ -193,6 +193,10 @@ function onBodyClick(e) {
     e.target.classList.add("found")
     secretwows++
     secretWowEl.innerText = secretwows
+    if(secretwows === 50) {
+      document.querySelector('.head').style.display = 'none'
+      document.querySelector('.hatted').style.display = 'block'
+    }
   }
 }
 
