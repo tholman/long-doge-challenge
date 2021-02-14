@@ -22,6 +22,12 @@ const primeWows = []
 let dogePrime = false
 
 document.querySelector(".print").addEventListener("click", () => {
+
+  // Printing with 50 secret wows gives head
+  if(secretwows === 50) {
+      document.querySelector('.head').style.display = 'none'
+      document.querySelector('.hatted').style.display = 'block'
+    }
   window.print()
 })
 
@@ -193,10 +199,6 @@ function onBodyClick(e) {
     e.target.classList.add("found")
     secretwows++
     secretWowEl.innerText = secretwows
-    if(secretwows === 50) {
-      document.querySelector('.head').style.display = 'none'
-      document.querySelector('.hatted').style.display = 'block'
-    }
   }
 }
 
