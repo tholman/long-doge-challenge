@@ -79,16 +79,30 @@
         position: absolute;
         font-size: 240px;
         transform: translateX(-50%);
+        z-index: -2;
         -webkit-text-stroke: 4px white;
       }
 
       .rainbow {
-        color: pink;
+        color: hotpink;
         animation: rainbow 1500ms ease infinite;
       }
 
       .hidden {
         display: none;
+      }
+
+      .secretwow {
+        cursor: pointer;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQYV2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXQdISfAAAAAElFTkSuQmCC);
+      }
+
+      .secretwow.found {
+        font-weight: bold;
+      }
+
+      .print {
+        cursor: pointer;
       }
 
       @media (max-width: 800px) {
@@ -120,16 +134,32 @@
   </head>
   <body>
     <div class="info">
-      <h1>PRINT A LONG DOGE</h1>
+      <h1>LONG DOGE CHALLENGE</h1>
       <div class="stat">
-        You have collected <span id="wows">0</span> wows<br />
+
+        <div id="longcontainer">
+          Your doge is <span id="length">wow</span> long
+        </div>
+
+        <div id="wowers">
+          You have collected <span id="wows">0</span> wows
+        </div>
+
         <div id="largewowcontainer" class="hidden">
-          You have collected <span id="largeWows">0</span> LARGE wows<br />
+          You have collected <span id="largeWows">0</span> LARGE wows
         </div>
+
         <div id="rainbowwowcontainer" class="hidden">
-          You have rainbowed <span id="rainbow">0</span> wows<br />
+          You have rainbowed <span id="rainbow">0</span> wows
         </div>
-        Your doge is <span id="length">wow</span> long
+
+        <div id="dogeprimecontainer" class="hidden">
+          DogePrime is <span id="dogeprime">inactive</span>
+        </div>
+
+        <div id="secretwowcontainer" class="hidden">
+          You have found <span id="secretwow">0</span>/<span id="secretwowtotal">100</span> Secret Wows
+        </div>
       </div>
     </div>
     <div class="print"><h1>CLICK TO PRINT!</h1></div>
@@ -173,34 +203,34 @@
 </pre
       >
       <pre class="neck">
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
   ▀▄▒▒▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
-   ▀▄▒▒▒▒░▒▒▒▒▒▒▒▒▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
+   ▀▄▒▒▒▒░▒▒▒▒▒▒▒▒▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
   ▀▄▒▒▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-   ▀▄▒▒▒▒░▒▒▒▒▒▒▒▒▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+   ▀▄▒▒▒▒░▒▒▒▒▒▒▒▒▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
   ▀▄▒▒▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
-   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌  
-   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌  
-  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐  
-  ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
+   ▀▄▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
+   ▄▀▒▒▒░▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▒▌
+  ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▒▐
+  ▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌
 </pre
       >
     </div>
