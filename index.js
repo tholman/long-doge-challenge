@@ -194,7 +194,7 @@ function shuffleArray(array) {
 }
 
 function onBodyClick(e) {
-  if (e.target.className === "textwow" && largewows >= 10) {
+  if (e.target.className === "textwow" && largewows >= 15) {
     rainbowwows++
     e.target.classList.add("rainbow")
     rainbowwowcontainer.classList.remove("hidden")
