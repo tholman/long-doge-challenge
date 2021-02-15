@@ -29,7 +29,6 @@ const fibonacciSecretWows = []
 let dogePrime = false
 
 document.querySelector(".print").addEventListener("click", () => {
-  // Printing with 50 secret wows gives head
   if (fibonacciChallengeComplete) {
     document.querySelector(".head").style.display = "none"
     document.querySelector(".hatted").style.display = "block"
