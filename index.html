@@ -9,9 +9,19 @@
       content="The website of the one and only long doge challenge. Don't forget to PRINT!"
     />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Facebook -->
     <meta property="og:title" content="The Long Doge Challenge" />
@@ -23,12 +33,18 @@
       content="The website of the one and only long doge challenge. Try to achieve the longest doge, doge prime, and more! Don't forget to PRINT!"
     />
 
-    <meta property="og:image" content="https://longdogechallenge.com/assets/share.png">
-    <meta property="og:url" content="https://longdogechallenge.com/">
-    <meta name="twitter:image" content="https://longdogechallenge.com/assets/share.png">
+    <meta
+      property="og:image"
+      content="https://longdogechallenge.com/assets/share.png"
+    />
+    <meta property="og:url" content="https://longdogechallenge.com/" />
+    <meta
+      name="twitter:image"
+      content="https://longdogechallenge.com/assets/share.png"
+    />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="The Long Doge Challenge" />
     <meta name="twitter:url" content="https://longdogechallenge.com" />
     <meta
@@ -83,13 +99,18 @@
       .sitter {
         position: fixed;
         bottom: 15px;
-        background: rgba(0, 0, 0, 0.07);
-        padding: 10px 15px;
-        border-radius: 22px;
         font-family: monospace;
         font-size: 11px;
         font-weight: bold;
         text-transform: uppercase;
+      }
+
+      .watch {
+        background: rgba(0, 0, 0, 0.07);
+        padding: 10px 15px;
+        border-radius: 22px;
+        display: inline-block;
+        margin-right: 5px;
       }
 
       .left {
@@ -151,6 +172,19 @@
         animation: spinRight 700ms forwards infinite;
       }
 
+      .twitter {
+        background: url('data:image/png;base64,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');
+        width: 33px;
+        height: 33px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-color: rgba(0, 0, 0, 0.07);
+        border-radius: 50%;
+        background-size: 20px 20px;
+        background-position: center;
+        vertical-align: top;
+      }
+
       @media (max-width: 600px) {
         .sitter {
           display: none;
@@ -200,14 +234,11 @@
     <div class="info">
       <h1>LONG DOGE CHALLENGE</h1>
       <div class="stat">
-
         <div id="longcontainer">
           Your doge is <span id="length">wow</span> long
         </div>
 
-        <div id="wowers">
-          You have collected <span id="wows">0</span> wows
-        </div>
+        <div id="wowers">You have collected <span id="wows">0</span> wows</div>
 
         <div id="largewowcontainer" class="hidden">
           You have collected <span id="largeWows">0</span> LARGE wows
@@ -222,7 +253,10 @@
         </div>
 
         <div id="secretwowcontainer" class="hidden">
-          You have found <span id="secretwow">0</span>/<span id="secretwowtotal">100</span> Secret Wows
+          You have found <span id="secretwow">0</span>/<span id="secretwowtotal"
+            >100</span
+          >
+          Secret Wows
         </div>
 
         <div id="fibowowcontainer" class="hidden">
@@ -272,7 +306,8 @@
   ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▄▒▒▒▒▌  
   ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒▒▄▒▐  
   ▀▄▒▒▒▒▒▒▒▒░▒▒▒▒▒░▒▒▄▒▒▒▒▌
-</pre>
+</pre
+      >
       <pre class="head">
         ▄               ▄    
         ▌▒█           ▄▀▒▌   
@@ -344,6 +379,7 @@
       >
     </div>
     <div class="sitter left">
+      <div class="watch">
       watch me making this:
       <a
         class="yt"
@@ -355,8 +391,9 @@
         class="twitch"
         href="https://www.twitch.tv/timbuildsuselesswebsites"
         target="_blank"
-        >twitch</a
-      >
+        >twitch</a>
+      </div>
+      <a class="twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flongdogechallenge.com&via=twholman&text=Love%20Doge%3F%20Try%20to%20complete%20the%20long%20doge%20challenge&hashtags=doge" target="_blank"></a>
     </div>
     <script src="./index.js"></script>
   </body>
