@@ -6,12 +6,14 @@ const largeWowContainer = document.querySelector("#largewowcontainer")
 const rainbowWowContainer = document.querySelector("#rainbowwowcontainer")
 const dogePrimeContainer = document.querySelector("#dogeprimecontainer")
 const secretWowContainer = document.querySelector("#secretwowcontainer")
+const fibowowcontainer = document.querySelector("#fibowowcontainer")
 
 const largewowEl = document.querySelector("#largeWows")
 const lengthEl = document.querySelector("#length")
 const rainbowsEl = document.querySelector("#rainbow")
 const dogePrimeEl = document.querySelector("#dogeprime")
 const secretWowEl = document.querySelector("#secretwow")
+const fiboWowEl = document.querySelector("#fibo")
 
 let wows = 0
 let largewows = 0
@@ -19,15 +21,19 @@ let rainbowwows = 0
 let secretwows = 0
 let minidoges = 0
 const primeWows = []
+
+let fibonacciChallengeStarted = false
+let fibonacciChallengeComplete = false
+const fibonacciWows = []
+const fibonacciSecretWows = []
 let dogePrime = false
 
 document.querySelector(".print").addEventListener("click", () => {
-
   // Printing with 50 secret wows gives head
-  if(secretwows === 50) {
-      document.querySelector('.head').style.display = 'none'
-      document.querySelector('.hatted').style.display = 'block'
-    }
+  if (fibonacciChallengeComplete) {
+    document.querySelector(".head").style.display = "none"
+    document.querySelector(".hatted").style.display = "block"
+  }
   window.print()
 })
 
@@ -73,10 +79,12 @@ function injectWow() {
   newWow.style.top = wrapper.offsetHeight - 200 + "px"
   document.body.appendChild(newWow)
 
-  if (wows < 5) {
-    if (isPrime(wows)) {
-      primeWows.push(newWow)
-    }
+  if (isPrime(wows)) {
+    primeWows.push(newWow)
+  }
+
+  if (isFibonacci(wows)) {
+    fibonacciWows.push(newWow)
   }
 
   if (wows === 10) {
@@ -167,6 +175,17 @@ function isPrime(n) {
   return true
 }
 
+function isSquare(n) {
+  return n > 0 && Math.sqrt(n) % 1 === 0
+}
+
+function isFibonacci(numberToCheck) {
+  return (
+    isSquare(5 * numberToCheck * numberToCheck + 4) ||
+    isSquare(5 * numberToCheck * numberToCheck - 4)
+  )
+}
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -175,7 +194,7 @@ function shuffleArray(array) {
 }
 
 function onBodyClick(e) {
-  if (e.target.className === "textwow" && largewows >= 15) {
+  if (e.target.className === "textwow" && largewows >= 10) {
     rainbowwows++
     e.target.classList.add("rainbow")
     rainbowwowcontainer.classList.remove("hidden")
@@ -199,7 +218,64 @@ function onBodyClick(e) {
     e.target.classList.add("found")
     secretwows++
     secretWowEl.innerText = secretwows
+
+    if (secretwows === 100) {
+      fibonacciChallengeStarted = true
+      fibowowcontainer.classList.remove("hidden")
+    }
   }
+
+  if (fibonacciChallengeStarted) {
+    if (
+      e.target.classList.contains("textwow") ||
+      e.target.classList.contains("secretwow")
+    ) {
+      if (e.target.classList.contains("spinLeft")) {
+        e.target.classList.remove("spinLeft")
+        e.target.classList.add("spinRight")
+      } else if (e.target.classList.contains("spinRight")) {
+        e.target.classList.remove("spinRight")
+        e.target.classList.add("spinLeft")
+      } else {
+        e.target.classList.add("spinLeft")
+      }
+
+      checkAllFiboWows()
+    }
+  }
+}
+
+function checkAllFiboWows() {
+  let successConfirmed = true
+
+  let right = true
+  for (let i = 0; i < fibonacciWows.length; i++) {
+    if (fibonacciWows[i].classList.contains(right ? "spinRight" : "spinLeft")) {
+      right = !right
+    } else {
+      successConfirmed = false
+    }
+  }
+
+  right = false
+  for (let i = 0; i < fibonacciSecretWows.length; i++) {
+    if (
+      fibonacciSecretWows[i].classList.contains(
+        right ? "spinRight" : "spinLeft"
+      )
+    ) {
+      right = !right
+    } else {
+      successConfirmed = false
+    }
+  }
+
+  if (successConfirmed) {
+    fibonacciChallengeComplete = true
+    fibo.innerText = "COMPLETE"
+  }
+
+  console.log("success confirmed!", successConfirmed)
 }
 
 function setupSecretWows() {
@@ -213,7 +289,7 @@ function setupSecretWows() {
   shuffleArray(allnecksAsArray)
 
   // Do this for first 100 shuffled neck pieces
-  let total = Math.min(100, allnecksAsArray.length)
+  let total = 100
 
   for (let i = 0; i < total; i++) {
     let neckItem = allnecksAsArray[i]
@@ -225,6 +301,14 @@ function setupSecretWows() {
       '<span class="secretwow">WOW</span>' +
       pieces[pieceIndex].slice(injectionIndex + 3)
     neckItem.innerHTML = pieces.join("\n")
+  }
+
+  const allSecretwows = document.querySelectorAll(".secretwow")
+  const secretWowsAsArray = Array.apply(null, allSecretwows)
+  for (let i = 0; i < secretWowsAsArray.length; i++) {
+    if (isFibonacci(i)) {
+      fibonacciSecretWows.push(secretWowsAsArray[i])
+    }
   }
 }
 

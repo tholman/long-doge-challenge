@@ -93,6 +93,7 @@
       }
 
       .secretwow {
+        display: inline-block;
         cursor: pointer;
         background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQYV2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXQdISfAAAAAElFTkSuQmCC);
       }
@@ -109,6 +110,14 @@
         display: none;
       }
 
+      .spinLeft {
+        animation: spinLeft 700ms forwards infinite;
+      }
+
+      .spinRight {
+        animation: spinRight 700ms forwards infinite;
+      }
+
       @media (max-width: 800px) {
         .sitter {
           display: none;
@@ -121,6 +130,24 @@
         }
         100% {
           filter: hue-rotate(360deg);
+        }
+      }
+
+      @keyframes spinLeft {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spinRight {
+        0% {
+          transform: rotate(360deg);
+        }
+        100% {
+          transform: rotate(0deg);
         }
       }
 
@@ -163,6 +190,10 @@
 
         <div id="secretwowcontainer" class="hidden">
           You have found <span id="secretwow">0</span>/<span id="secretwowtotal">100</span> Secret Wows
+        </div>
+
+        <div id="fibowowcontainer" class="hidden">
+          FibbonacciDoge is <span id="fibo">inactive</span>
         </div>
       </div>
     </div>
