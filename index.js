@@ -274,8 +274,6 @@ function checkAllFiboWows() {
     fibonacciChallengeComplete = true
     fibo.innerText = "COMPLETE"
   }
-
-  console.log("success confirmed!", successConfirmed)
 }
 
 function setupSecretWows() {
