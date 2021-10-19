@@ -21,7 +21,7 @@ let rainbowwows = 0
 let secretwows = 0
 let minidoges = 0
 const primeWows = []
-const largeWowsRequired = 15
+const largeWowsRequired = 10
 
 let fibonacciChallengeStarted = false
 let fibonacciChallengeComplete = false
@@ -143,7 +143,7 @@ function injectWow() {
     lengthEl.innerText = "wowwowowowowowowowowowowwooweeeeeeeeee"
   }
 
-  if (wows > 200 && Math.random() > 0.993) {
+  if (wows > 200 && Math.random() > 0.985) {
     injectLargeWow()
   }
 }
