@@ -294,6 +294,7 @@ function checkAllFiboWows() {
     fibonacciChallengeComplete = true
     fibo.innerText = "COMPLETE (NOW PRINT!)"
   } else {
+    fibonacciChallengeComplete = false
     fibo.innerText = innerText
   }
 }
