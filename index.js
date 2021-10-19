@@ -21,6 +21,7 @@ let rainbowwows = 0
 let secretwows = 0
 let minidoges = 0
 const primeWows = []
+const largeWowsRequired = 15
 
 let fibonacciChallengeStarted = false
 let fibonacciChallengeComplete = false
@@ -159,6 +160,12 @@ function injectLargeWow() {
   newWow.style.left = "50%"
   newWow.style.top = wrapper.offsetHeight - 200 + "px"
   document.body.appendChild(newWow)
+
+  // Release the text about the large wows on exactly 15
+  if(largewows === largeWowsRequired) {
+    rainbowwowcontainer.classList.remove("hidden")
+    dogePrimeContainer.classList.remove("hidden")
+  }
 }
 
 function isPrime(n) {
@@ -193,15 +200,16 @@ function shuffleArray(array) {
 }
 
 function onBodyClick(e) {
-  if (e.target.className === "textwow" && largewows >= 15) {
+  if (e.target.className === "textwow" && largewows >= largeWowsRequired) {
     rainbowwows++
     e.target.classList.add("rainbow")
-    rainbowwowcontainer.classList.remove("hidden")
+
     rainbowsEl.innerText = rainbowwows
 
+    let count = 0
     // Check if they have achieved dogePrime
-    dogePrimeContainer.classList.remove("hidden")
     let isPrime = primeWows.every((wowEl) => {
+      count++
       return wowEl.classList.contains("rainbow")
     })
 
@@ -210,6 +218,8 @@ function onBodyClick(e) {
       dogePrime = true
       dogePrimeEl.innerText = "ACTIVE"
       setupSecretWows()
+    } else if (count !== primeWows.length) {
+      dogePrimeEl.innerText = "INACTIVE (" + count + '/' + primeWows.length + ")"
     }
   }
 
@@ -246,32 +256,45 @@ function onBodyClick(e) {
 
 function checkAllFiboWows() {
   let successConfirmed = true
+  let innerText = 'INACTIVE '
 
   let right = true
+  let chainOfLengthRegular = 0
   for (let i = 0; i < fibonacciWows.length; i++) {
     if (fibonacciWows[i].classList.contains(right ? "spinRight" : "spinLeft")) {
       right = !right
+      chainOfLengthRegular++
     } else {
       successConfirmed = false
+      break
     }
   }
 
+  innerText += "\n (" + chainOfLengthRegular + '/' + fibonacciWows.length + ') Regular (LRL) \n'
+
   right = false
+  let chainofLengthSecret = 0
   for (let i = 0; i < fibonacciSecretWows.length; i++) {
     if (
       fibonacciSecretWows[i].classList.contains(
         right ? "spinRight" : "spinLeft"
       )
     ) {
+      chainofLengthSecret++
       right = !right
     } else {
       successConfirmed = false
+      break
     }
   }
 
+  innerText += "(" + chainofLengthSecret + '/' + fibonacciSecretWows.length + ') Secret (RLR)'
+
   if (successConfirmed) {
     fibonacciChallengeComplete = true
-    fibo.innerText = "COMPLETE"
+    fibo.innerText = "COMPLETE (NOW PRINT!)"
+  } else {
+    fibo.innerText = innerText
   }
 }
 
@@ -303,7 +326,7 @@ function setupSecretWows() {
   const allSecretwows = document.querySelectorAll(".secretwow")
   const secretWowsAsArray = Array.apply(null, allSecretwows)
   for (let i = 0; i < secretWowsAsArray.length; i++) {
-    if (isFibonacci(i)) {
+    if (isFibonacci(i + 1)) {
       fibonacciSecretWows.push(secretWowsAsArray[i])
     }
   }
