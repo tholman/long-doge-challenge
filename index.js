@@ -143,7 +143,7 @@ function injectWow() {
     lengthEl.innerText = "wowwowowowowowowowowowowwooweeeeeeeeee"
   }
 
-  if (wows > 200 && Math.random() > 0.985) {
+  if (wows > 200 && Math.random() > 0.99) {
     injectLargeWow()
   }
 }
